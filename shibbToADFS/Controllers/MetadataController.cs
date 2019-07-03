@@ -75,9 +75,5 @@ namespace shibbToADFS.Controllers
                 }
         }
 
- 
-
-
-
     }
 }
