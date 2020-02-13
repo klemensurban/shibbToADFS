@@ -12,7 +12,7 @@ namespace shibbToADFS.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -78,6 +78,80 @@ Mo0l1Bhktwu7txYDxCUWXmhqakzLIu9OAL+vpdek1QPp4rKST0NMwMK+kETNJQ==
         public int CacheTimeMinutes {
             get {
                 return ((int)(this["CacheTimeMinutes"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>//md:SPSSODescriptor</string>\r\n  <string>//md:AttributeAuthorityDescriptor" +
+            "</string>\r\n  <string>/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescrip" +
+            "tor/md:SingleSignOnService[@Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-P" +
+            "OST-SimpleSign\"]</string>\r\n  <string>/md:EntitiesDescriptor/md:EntityDescriptor/" +
+            "md:IDPSSODescriptor/md:SingleSignOnService[@Binding=\"urn:oasis:names:tc:SAML:2.0" +
+            ":bindings:HTTP-Artifact\"]</string>\r\n  <string>/md:EntitiesDescriptor/md:EntityDe" +
+            "scriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding=\"urn:oasis:names:tc" +
+            ":SAML:2.0:bindings:PAOS\"]</string>\r\n  <string>/md:EntitiesDescriptor/md:EntityDe" +
+            "scriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding=\"urn:oasis:names:tc" +
+            ":SAML:2.0:bindings:SOAP\"]</string>\r\n  <string>/md:EntitiesDescriptor/md:EntityDe" +
+            "scriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding=\"urn:oasis:names:tc" +
+            ":SAML:1.0:bindings:SOAP-binding\"]</string>\r\n  <string>/md:EntitiesDescriptor/md:" +
+            "EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding=\"urn:mace:s" +
+            "hibboleth:1.0:profiles:AuthnRequest\"]</string>\r\n  <string>/md:EntitiesDescriptor" +
+            "/md:EntityDescriptor/md:IDPSSODescriptor/md:ArtifactResolutionService[@Binding=\"" +
+            "urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding\"]</string>\r\n  <string>/md:Enti" +
+            "tiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleLogoutService[@B" +
+            "inding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign\"]</string>\r\n  " +
+            "<string>/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:Single" +
+            "LogoutService[@Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:SOAP\"]</string>\r\n</" +
+            "ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection IdpNodes2Delete {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["IdpNodes2Delete"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>//md:IDPSSODescriptor</string>
+  <string>//md:AttributeAuthorityDescriptor</string>
+  <string>/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign""]</string>
+  <string>/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:PAOS""]</string>
+  <string>/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:SOAP""]</string>
+  <string>/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact""]</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection SpNodes2Delete {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["SpNodes2Delete"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/md:EntitiesDescriptor/md:EntityDescriptor[@entityID=\"{0}\"]")]
+        public string XPath2Copy {
+            get {
+                return ((string)(this["XPath2Copy"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>//md:IDPSSODescriptor</string>
+  <string>//md:AttributeAuthorityDescriptor</string>
+  <string>/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign""]</string>
+  <string>/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:PAOS""]</string>
+  <string>/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:SOAP""]</string>
+  <string>/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact""]</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection SpProxyNodes2Delete {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["SpProxyNodes2Delete"]));
             }
         }
     }

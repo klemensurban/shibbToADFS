@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Security.Cryptography.Xml;
 using System.Web.Mvc;
 using System.Xml;
+using System.Xml.XPath;
 using shibbToADFS.Models;
 using shibbToADFS.Properties;
 
@@ -15,12 +19,12 @@ namespace shibbToADFS.Controllers
         {
             XmlDocument adfsMetaData = GetMetadataformEntityID(entityID);
 
-            var adfsns = adfsMetaData.DocumentElement.NamespaceURI;
-            var adfsNamespaceManager = new XmlNamespaceManager(adfsMetaData.NameTable);
-            adfsNamespaceManager.AddNamespace("md", adfsns);
+            var adfsNamespaceManager = AdfsNamespaceManager(adfsMetaData);
 
-            DeleteNodes(adfsMetaData, adfsNamespaceManager, "//md:SPSSODescriptor");
-            DeleteNodes(adfsMetaData, adfsNamespaceManager, "//md:AttributeAuthorityDescriptor");
+            foreach (string xPath in Settings.Default.IdpNodes2Delete)
+            {
+                DeleteNodes(adfsMetaData, adfsNamespaceManager, xPath);
+            }
 
             return new XmlActionResult(adfsMetaData);
         }
@@ -32,14 +36,56 @@ namespace shibbToADFS.Controllers
         {
             XmlDocument adfsMetaData = GetMetadataformEntityID(entityID);
 
-            var adfsns = adfsMetaData.DocumentElement.NamespaceURI;
-            var adfsNamespaceManager = new XmlNamespaceManager(adfsMetaData.NameTable);
-            adfsNamespaceManager.AddNamespace("md", adfsns);
+            // Get all defined Namespaces from Document
+            var adfsNamespaceManager = AdfsNamespaceManager(adfsMetaData);
 
-            DeleteNodes(adfsMetaData, adfsNamespaceManager, "//md:IDPSSODescriptor");
-            DeleteNodes(adfsMetaData, adfsNamespaceManager, "//md:AttributeAuthorityDescriptor");
+            foreach (string xPath in Settings.Default.SpNodes2Delete)
+            {
+                DeleteNodes(adfsMetaData, adfsNamespaceManager, xPath);
+            }
+
 
             return new XmlActionResult(adfsMetaData);
+        }
+
+        [HttpGet]
+        [Route("spproxy")]
+        // ReSharper disable once InconsistentNaming
+        public ActionResult SpProxy(string metadataUrl)
+        {
+            XmlDocument metaData   = new XmlDocument { PreserveWhitespace = true };
+
+            HttpWebRequest request = WebRequest.CreateHttp(metadataUrl);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            using (Stream receiveStream = response.GetResponseStream())
+            {
+                metaData.Load(receiveStream);
+            }
+
+            // Get all defined Namespaces from Document
+            var adfsNamespaceManager = AdfsNamespaceManager(metaData);
+
+            foreach (string xPath in Settings.Default.SpProxyNodes2Delete)
+            {
+                DeleteNodes(metaData, adfsNamespaceManager, xPath);
+            }
+
+            return new XmlActionResult(metaData);
+        }
+
+        private static XmlNamespaceManager AdfsNamespaceManager(XmlDocument adfsMetaData)
+        {
+            var adfsNamespaceManager = new XmlNamespaceManager(adfsMetaData.NameTable);
+            XPathNavigator nav = adfsMetaData.CreateNavigator();
+            nav.MoveToFollowing(XPathNodeType.Element);
+            var nameSpaces = nav.GetNamespacesInScope(XmlNamespaceScope.ExcludeXml);
+            if (nameSpaces != null)
+                foreach (var ns in nameSpaces)
+                {
+                    adfsNamespaceManager.AddNamespace(ns.Key, ns.Value);
+                }
+
+            return adfsNamespaceManager;
         }
 
         private static XmlDocument GetMetadataformEntityID(string entityID)
@@ -53,10 +99,10 @@ namespace shibbToADFS.Controllers
 
             lock (metadataDocument.ReadLock)
             {
-                string xmlns = metadataDocument.Document.DocumentElement.NamespaceURI;
-                var xmlNamespaceManager = new XmlNamespaceManager(metadataDocument.Document.NameTable);
-                xmlNamespaceManager.AddNamespace("md", xmlns);
-                var entitiesDescriptorNode = metadataDocument.Document.SelectSingleNode($"/md:EntitiesDescriptor/md:EntityDescriptor[@entityID=\"{entityID}\"]", xmlNamespaceManager);
+                var xmlNamespaceManager = AdfsNamespaceManager(metadataDocument.Document);
+                string xpathTemplate = Settings.Default.XPath2Copy;
+                string xpath = String.Format(xpathTemplate, entityID);
+                var entitiesDescriptorNode = metadataDocument.Document.SelectSingleNode(xpath, xmlNamespaceManager);
                 XmlNode copiedNode = adfsMetaData.ImportNode(entitiesDescriptorNode, true);
                 adfsMetaData.DocumentElement.AppendChild(copiedNode);
             }

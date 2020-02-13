@@ -36,5 +36,46 @@ Mo0l1Bhktwu7txYDxCUWXmhqakzLIu9OAL+vpdek1QPp4rKST0NMwMK+kETNJQ==
     <Setting Name="CacheTimeMinutes" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">15</Value>
     </Setting>
+    <Setting Name="IdpNodes2Delete" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;//md:SPSSODescriptor&lt;/string&gt;
+  &lt;string&gt;//md:AttributeAuthorityDescriptor&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleSignOnService[@Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:ArtifactResolutionService[@Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:IDPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="SpNodes2Delete" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;//md:IDPSSODescriptor&lt;/string&gt;
+  &lt;string&gt;//md:AttributeAuthorityDescriptor&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"]&lt;/string&gt;
+  &lt;string&gt;/md:EntitiesDescriptor/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="XPath2Copy" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/md:EntitiesDescriptor/md:EntityDescriptor[@entityID="{0}"]</Value>
+    </Setting>
+    <Setting Name="SpProxyNodes2Delete" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;//md:IDPSSODescriptor&lt;/string&gt;
+  &lt;string&gt;//md:AttributeAuthorityDescriptor&lt;/string&gt;
+  &lt;string&gt;/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"]&lt;/string&gt;
+  &lt;string&gt;/md:EntityDescriptor/md:SPSSODescriptor/md:AssertionConsumerService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS"]&lt;/string&gt;
+  &lt;string&gt;/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"]&lt;/string&gt;
+  &lt;string&gt;/md:EntityDescriptor/md:SPSSODescriptor/md:SingleLogoutService[@Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"]&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
