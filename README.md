@@ -13,3 +13,4 @@ In order to avoid that the central metadata document has to be reloaded from the
 The XPath of those XML nodes that are to be deleted from the metadata are also configured in web.config.
 
 
+.
