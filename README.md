@@ -1,4 +1,7 @@
 # shibbToADFS
+
+superseded by nocscienceat.adfs2shibb
+
 In a shibboleth-based Identity Federation, the metadata of the IDPs and SPs are typically stored in a centralized signed XML metadata document. To enable a participating ADFS instance to automatically update the metadata, this central metadata document must be split into one metadata document per IDP or SP.  Additionally, endpoints that are not supported by ADFS must be deleted from this metadata.
 <br/>
 The ASP.Net 4.7-based project of this repository provides this function on the fly.  The central metadata file is loaded from an http/https distribution point, the signature is verified with the certificate specified in web.config. 
